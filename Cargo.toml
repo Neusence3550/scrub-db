@@ -8,6 +8,13 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/joyen12/scrub-db"
 keywords = ["database", "anonymization", "pii", "gdpr", "privacy"]
 categories = ["command-line-utilities", "database"]
+include = [
+    "src/**/*",
+    "Cargo.toml",
+    "README.md",
+    "LICENSE",
+    "NOTICE",
+]
 
 # Library: Core anonymization engine (free)
 [lib]
